@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DRAGON'S STORE</title>
+
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<div id="particles-js"></div>
+
+<header>
+
+    <div class="titulo">
+        <img src="img/logo.png" class="logo">
+        <h1>DRAGON'S STORE</h1>
+    </div>
+
+    <div class="acciones">
+
+        <div class="buscador">
+            <i class="fas fa-search"></i>
+            <input type="text" id="buscar"
+            placeholder="Buscar producto..."
+            onkeyup="buscarProductos()">
+        </div>
+
+        <div class="carrito" onclick="toggleCarrito()">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="contador">0</span>
+        </div>
+
+    </div>
+
+</header>
+
+<!-- CATEGORÍAS -->
+<div class="categorias">
+    <button onclick="filtrar('todos')"><i class="fas fa-border-all"></i> Todos</button>
+    <button onclick="filtrar('figuras')"><i class="fas fa-dragon"></i> Figuras</button>
+    <button onclick="filtrar('gadgets')"><i class="fas fa-mobile-alt"></i> Gadgets</button>
+    <button onclick="filtrar('perifericos')"><i class="fas fa-keyboard"></i> Periféricos</button>
+    <button onclick="filtrar('extras')"><i class="fas fa-star"></i> Extras</button>
+</div>
+
+<!-- PRODUCTOS -->
+<section class="grid" id="productos"></section>
+
+<!-- PANEL CARRITO -->
+<div id="panelCarrito" class="panelCarrito">
+
+    <div class="carrito-header">
+        <h2><i class="fas fa-shopping-cart"></i> Carrito</h2>
+
+        <div>
+            <button class="vaciar" onclick="vaciarCarrito()">
+                <i class="fas fa-trash"></i>
+            </button>
+
+            <button class="cerrarCarrito" onclick="toggleCarrito()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="listaCarrito"></div>
+
+    <h3 id="total">Total: S/0</h3>
+
+    <button class="btn finalizar" onclick="comprarCarrito()">
+        <i class="fab fa-whatsapp"></i> Comprar seleccionados
+    </button>
+
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="cerrar" onclick="cerrarModal()">✖</span>
+        <img id="modalImg">
+        <h2 id="modalNombre"></h2>
+        <p id="modalPrecio"></p>
+        <p id="modalDesc"></p>
+    </div>
+</div>
+
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+
+<!-- TU JS -->
+<script src="js/app.js"></script>
+
+<!-- PARTICLES INIT (opcional si lo usas) -->
+<script>
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 60 },
+    color: { value: "#3b82f6" },
+    shape: { type: "circle" },
+    size: { value: 3 },
+    move: { speed: 2 }
+  }
+});
+</script>
+
+</body>
+</html>
